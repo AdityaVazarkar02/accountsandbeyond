@@ -7,20 +7,17 @@ function toggleFloat(){
   document.querySelector('.floating-contact').style.display='none';
 }
 
+// Module Toggle Function for Course Syllabus
+function toggleModule(header) {
+    const module = header.parentElement;
+    module.classList.toggle('active');
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality (animations removed)
-    // initCounterAnimation();
-    // initProgressBars();
-    // initTestimonialSlider();
-    // initSmoothScrolling();
-    // initBackToTop();
-    // initFormSubmission();
-    // initScrollAnimations();
-    // initHeaderScrollEffect();
-    // initResponsiveBehaviors();
-    // initPageScrollEffects();
+    // Initialize all functionality
+    initBackToTop();
+    initSmoothScrolling();
 });
 
 // Page Scroll Effects (removed)

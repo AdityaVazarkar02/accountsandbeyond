@@ -13,7 +13,225 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
+    <style>
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-container {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .modal-close {
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+        
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #007cba;
+        }
+        
+        .form-group input.error {
+            border-color: #e74c3c;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .course-info-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007cba;
+        }
+        
+        .course-info-display h4 {
+            color: #007cba;
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+        }
+        
+        .course-info-display p {
+            margin: 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .submit-btn.loading .loading-spinner {
+            display: inline-block;
+        }
+        
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 480px) {
+            .modal-container {
+                width: 95%;
+            }
+            
+            .modal-header {
+                padding: 20px;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
 
 <body>
     <!-- Scroll Progress Bar -->
@@ -52,7 +270,60 @@
         </div>
     </section>
 
+    <!-- ===== COURSES PREVIEW ===== -->
+    <section class="course-preview-section">
+        <div class="container">
+            <h2>Our Featured Courses</h2>
+            <p class="subtitle">Choose the right course to kickstart your accounting career</p>
+            
+            <div class="course-cards-grid">
+                <!-- Course 1 - Account Analyst -->
+                <div class="course-card">
+                    <div class="course-card-icon">📊</div>
+                    <h3>Account Analyst</h3>
+                    <p>Foundation accounting course for beginners. Learn accounting fundamentals, Tally Prime, GST, TDS, and AI-powered accounting tools.</p>
+                    <ul class="course-card-features">
+                        <li>2 Months Duration</li>
+                        <li>5 Core Modules (1,2,3,4,11)</li>
+                        <li>Hands-on Tally Training</li>
+                        <li>Internship Support</li>
+                    </ul>
+                    <a href="course-detail-1.html" class="btn primary-btn know-more-btn" data-course="Account Analyst" data-url="course-detail-1.html">Know More</a>
+                </div>
+                
+                <!-- Course 2 - Advance Account Analyst -->
+                <div class="course-card">
+                    <div class="course-card-icon">📈</div>
+                    <h3>Advance Account Analyst</h3>
+                    <p>Advanced accounting with MIS reporting, year-end processes, and data management. Perfect for career advancement in accounting.</p>
+                    <ul class="course-card-features">
+                        <li>3 Months Duration</li>
+                        <li>7 Core Modules (1,2,3,4,7,8,9)</li>
+                        <li>MIS Dashboard Creation</li>
+                        <li>Data Analysis Skills</li>
+                    </ul>
+                    <a href="course-detail-2.html" class="btn primary-btn know-more-btn" data-course="Advance Account Analyst" data-url="course-detail-2.html">Know More</a>
+                </div>
+                
+                <!-- Course 3 - Pro Accounting -->
+                <div class="course-card">
+                    <div class="course-card-icon">💰</div>
+                    <h3>Pro Accounting</h3>
+                    <p>Complete professional program covering all 11 modules. From fundamentals to advanced AI-powered accounting workflows.</p>
+                    <ul class="course-card-features">
+                        <li>4 Months Duration</li>
+                        <li>11 Complete Modules</li>
+                        <li>Comprehensive Training</li>
+                        <li>6 Months Internship Support</li>
+                    </ul>
+                    <a href="course-detail-3.html" class="btn primary-btn know-more-btn" data-course="Pro Accounting" data-url="course-detail-3.html">Know More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== WHY CHOOSE US ===== -->
+    <!--
     <section class="courses-why-choose">
         <div class="container">
             <h2>why choose us</h2>
@@ -61,6 +332,7 @@
     </section>
 
     <!-- ===== COURSE SYLLABUS ===== -->
+    <!--
     <section id="syllabus" class="course-syllabus">
         <div class="container">
             <h2>Practical Accounting Course Syllabus</h2>
@@ -68,10 +340,14 @@
             
             <div class="modules-container">
                 <!-- Module 1 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 1: Accounting & Business Fundamentals</h3>
-                        <div class="objective">Objective: Build foundational accounting knowledge before automation with Tally & Excel</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 1: Accounting & Business Fundamentals</h3>
+                            <div class="objective">Objective: Build foundational accounting knowledge before automation with Tally & Excel</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -89,10 +365,14 @@
                 </div>
 
                 <!-- Module 2 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 2: Tally Prime Essentials (with Accounting Integration)</h3>
-                        <div class="objective">Objective: Develop practical skills in setting up and managing accounting data using Tally Prime</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 2: Tally Prime Essentials (with Accounting Integration)</h3>
+                            <div class="objective">Objective: Develop practical skills in setting up and managing accounting data using Tally Prime</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -111,10 +391,14 @@
                 </div>
 
                 <!-- Module 3 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 3: GST Accounting – Tally + Excel Workflow</h3>
-                        <div class="objective">Objective: Learn to record, reconcile, and report GST transactions effectively using Tally and Excel</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 3: GST Accounting – Tally + Excel Workflow</h3>
+                            <div class="objective">Objective: Learn to record, reconcile, and report GST transactions effectively using Tally and Excel</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -133,10 +417,14 @@
                 </div>
 
                 <!-- Module 4 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 4: TDS Compliance – Tally + Excel Workflow</h3>
-                        <div class="objective">Objective: Manage TDS deductions and compliance by integrating Tally entries with Excel reporting tools</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 4: TDS Compliance – Tally + Excel Workflow</h3>
+                            <div class="objective">Objective: Manage TDS deductions and compliance by integrating Tally entries with Excel reporting tools</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -154,10 +442,14 @@
                 </div>
 
                 <!-- Module 5 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 5: Payroll & Salary Accounting – Tally + Excel</h3>
-                        <div class="objective">Objective: Process and automate payroll accounting and salary management using Tally and Excel</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 5: Payroll & Salary Accounting – Tally + Excel</h3>
+                            <div class="objective">Objective: Process and automate payroll accounting and salary management using Tally and Excel</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -176,10 +468,14 @@
                 </div>
 
                 <!-- Module 6 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 6: Inventory & Purchase/Sales Cycle</h3>
-                        <div class="objective">Objective: Control inventory and record purchase/sales transactions with Tally supported by Excel tracking</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 6: Inventory & Purchase/Sales Cycle</h3>
+                            <div class="objective">Objective: Control inventory and record purchase/sales transactions with Tally supported by Excel tracking</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -194,10 +490,14 @@
                 </div>
 
                 <!-- Module 7 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 7: MIS Reporting – Excel Dashboards from Tally Data</h3>
-                        <div class="objective">Objective: Create dynamic MIS reports and dashboards in Excel by analyzing data exported from Tally</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 7: MIS Reporting – Excel Dashboards from Tally Data</h3>
+                            <div class="objective">Objective: Create dynamic MIS reports and dashboards in Excel by analyzing data exported from Tally</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -218,10 +518,14 @@
                 </div>
 
                 <!-- Module 8 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 8: Year-End Processes & Auditing</h3>
-                        <div class="objective">Objective: Execute year-end adjustments and prepare audit-ready financial reports using Tally and Excel</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 8: Year-End Processes & Auditing</h3>
+                            <div class="objective">Objective: Execute year-end adjustments and prepare audit-ready financial reports using Tally and Excel</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -236,10 +540,14 @@
                 </div>
 
                 <!-- Module 9 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 9: Data Management & Utilities</h3>
-                        <div class="objective">Objective: Master data management and system utilities for efficient accounting operations</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 9: Data Management & Utilities</h3>
+                            <div class="objective">Objective: Master data management and system utilities for efficient accounting operations</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -254,10 +562,14 @@
                 </div>
 
                 <!-- Module 10 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 10: Capstone Projects & Evaluation</h3>
-                        <div class="objective">Objective: Apply integrated knowledge of Tally and Excel in practical projects and assessments for workplace readiness</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 10: Capstone Projects & Evaluation</h3>
+                            <div class="objective">Objective: Apply integrated knowledge of Tally and Excel in practical projects and assessments for workplace readiness</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -271,10 +583,14 @@
                 </div>
 
                 <!-- Module 11 -->
+                <!--
                 <div class="module">
-                    <div class="module-header">
-                        <h3>Module 11: Generative AI in Accounting & Finance</h3>
-                        <div class="objective">Objective: Leverage generative AI tools to automate, enhance, and streamline accounting processes</div>
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-title">
+                            <h3>Module 11: Generative AI in Accounting & Finance</h3>
+                            <div class="objective">Objective: Leverage generative AI tools to automate, enhance, and streamline accounting processes</div>
+                        </div>
+                        <span class="module-toggle">+</span>
                     </div>
                     <div class="module-content">
                         <ul>
@@ -411,6 +727,232 @@
 
     <button id="backToTop" class="back-to-top">↑</button>
 
+    <!-- ===== ENROLLMENT MODAL ===== -->
+    <div id="enrollmentModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Course Enrollment</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="course-info-display">
+                    <h4 id="modalCourseName">Course Name</h4>
+                    <p>Please fill in your details to view course details</p>
+                </div>
+                
+                <div id="successMessage" class="success-message">
+                    ✅ Details submitted successfully! Redirecting to course page...
+                </div>
+                
+                <form id="enrollmentForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="444ed2e8-2f7f-4168-965a-bb4d0d6e133d">
+                    <input type="hidden" name="subject" value="New Course Inquiry - accounts & beyond">
+                    <input type="hidden" name="from_name" value="accounts & beyond Website">
+                    <input type="hidden" id="courseInput" name="course" value="">
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="name" placeholder="Enter your full name" required>
+                        <span class="error-message" id="nameError">Please enter your full name</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        <span class="error-message" id="emailError">Please enter a valid email address</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your 10-digit phone number" maxlength="10" required>
+                        <span class="error-message" id="phoneError">Please enter a valid 10-digit phone number</span>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="loading-spinner"></span>
+                        <span class="btn-text">Submit & View Course</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('enrollmentModal');
+        const form = document.getElementById('enrollmentForm');
+        const courseInput = document.getElementById('courseInput');
+        const modalCourseName = document.getElementById('modalCourseName');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        let redirectUrl = '';
+
+        // Open modal when Know More is clicked
+        document.querySelectorAll('.know-more-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const courseName = this.getAttribute('data-course');
+                redirectUrl = this.getAttribute('data-url');
+                
+                courseInput.value = courseName;
+                modalCourseName.textContent = courseName;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resetForm();
+        }
+
+        // Close modal on overlay click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Reset form
+        function resetForm() {
+            form.reset();
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+            document.getElementById('successMessage').classList.remove('show');
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('loading');
+            btnText.textContent = 'Submit & View Course';
+        }
+
+        // Validation functions
+        function validateName(name) {
+            return name.trim().length >= 2;
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^\d{10}$/;
+            return re.test(phone);
+        }
+
+        // Real-time validation
+        document.getElementById('fullName').addEventListener('blur', function() {
+            const error = document.getElementById('nameError');
+            if (!validateName(this.value)) {
+                this.classList.add('error');
+                error.classList.add('show');
+            } else {
+                this.classList.remove('error');
+                error.classList.remove('show');
+            }
+        });
+
+        document.getElementById('email').addEventListener('blur', function() {
+            const error = document.getElementById('emailError');
+            if (!validateEmail(this.value)) {
+                this.classList.add('error');
+                error.classList.add('show');
+            } else {
+                this.classList.remove('error');
+                error.classList.remove('show');
+            }
+        });
+
+        document.getElementById('phone').addEventListener('blur', function() {
+            const error = document.getElementById('phoneError');
+            if (!validatePhone(this.value)) {
+                this.classList.add('error');
+                error.classList.add('show');
+            } else {
+                this.classList.remove('error');
+                error.classList.remove('show');
+            }
+        });
+
+        // Allow only numbers in phone field
+        document.getElementById('phone').addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Form submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            let isValid = true;
+
+            // Validate all fields
+            if (!validateName(name)) {
+                document.getElementById('fullName').classList.add('error');
+                document.getElementById('nameError').classList.add('show');
+                isValid = false;
+            }
+
+            if (!validateEmail(email)) {
+                document.getElementById('email').classList.add('error');
+                document.getElementById('emailError').classList.add('show');
+                isValid = false;
+            }
+
+            if (!validatePhone(phone)) {
+                document.getElementById('phone').classList.add('error');
+                document.getElementById('phoneError').classList.add('show');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            btnText.textContent = 'Submitting...';
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show success message
+                    document.getElementById('successMessage').classList.add('show');
+                    form.style.display = 'none';
+                    
+                    // Redirect after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = redirectUrl;
+                    }, 2000);
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                alert('Something went wrong. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                btnText.textContent = 'Submit & View Course';
+            }
+        });
+    </script>
 </body>
 </html>

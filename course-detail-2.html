@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Advanced Excel & MIS Reporting - Complete course details at accounts & beyond">
+    <meta name="keywords" content="excel course, MIS reporting, data analysis, excel training, pivot tables">
+    <meta name="author" content="accounts & beyond">
+    <meta name="theme-color" content="#007cba">
+    
+    <title>Advance Account Analyst - accounts & beyond</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .course-detail-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .course-detail-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .course-detail-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .course-overview {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .course-overview-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .course-info h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .course-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .course-highlights {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .course-highlights h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: #007cba;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .course-modules-detail {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .course-modules-detail h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 50px;
+        }
+        
+        .module-detail-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .module-detail-card h3 {
+            color: #007cba;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .module-detail-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .module-detail-card ul li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        .module-detail-card ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .course-cta {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .course-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .course-cta .btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .breadcrumb {
+            padding: 20px 0;
+            background: #f8f9fa;
+        }
+        
+        .breadcrumb a {
+            color: #007cba;
+            text-decoration: none;
+        }
+        
+        .breadcrumb span {
+            color: #666;
+            margin: 0 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .course-overview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-detail-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress"></div>
+    </div>
+    
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <nav class="nav">
+            <div class="logo">
+                <img src="Image/logo.jpeg" alt="accounts & beyond Logo">
+            </div>
+
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <a href="admissions.html" class="btn primary-btn">Enroll Now</a>
+
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
+
+    <!-- ===== BREADCRUMB ===== -->
+    <section class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>></span> <a href="courses.html">Courses</a> <span>></span> Advance Account Analyst
+        </div>
+    </section>
+
+    <!-- ===== BACK BUTTON ===== -->
+    <div class="container" style="padding: 20px 0;">
+        <a href="courses.html" class="btn secondary-btn" style="display: inline-flex; align-items: center; gap: 8px;">
+            ← Back to Courses
+        </a>
+    </div>
+
+    <!-- ===== COURSE DETAIL HERO ===== -->
+    <section class="course-detail-hero">
+        <div class="container">
+            <h1>Advance Account Analyst</h1>
+            <p>Advanced accounting course with MIS reporting, year-end processes, data management, and comprehensive Tally + Excel workflows</p>
+            <a href="admissions.html" class="btn primary-btn">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- ===== COURSE OVERVIEW ===== -->
+    <section class="course-overview">
+        <div class="container">
+            <div class="course-overview-grid">
+                <div class="course-info">
+                    <h2>Course Overview</h2>
+                    <p>The Advance Account Analyst course builds upon foundational accounting knowledge and dives deeper into advanced accounting workflows, MIS reporting, year-end processes, and data management using Tally Prime and Excel.</p>
+                    <p>This course covers everything from accounting fundamentals to advanced topics like MIS dashboard creation, year-end finalization, auditing features, and data management utilities. You'll learn to export Tally data to Excel, create pivot tables and charts for GST analysis, sales summaries, and debtor aging reports.</p>
+                    <p>Perfect for accounting professionals who want to advance their career and handle complex accounting tasks independently.</p>
+                </div>
+                <div class="course-highlights">
+                    <h3>Course Highlights</h3>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⏱️</div>
+                        <div>
+                            <strong>Duration</strong><br>
+                            3 Months
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">�</div>
+                        <div>
+                            <strong>Modules</strong><br>
+                            7 Core Modules
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">💼</div>
+                        <div>
+                            <strong>Internship</strong><br>
+                            Up to 4 Months Support
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🎯</div>
+                        <div>
+                            <strong>Mode</strong><br>
+                            Online + Offline
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">📜</div>
+                        <div>
+                            <strong>Certificate</strong><br>
+                            Industry Recognized
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COURSE MODULES ===== -->
+    <section class="course-modules-detail">
+        <div class="container">
+            <h2>Detailed Course Modules</h2>
+            
+            <div class="modules-container">
+                <!-- Module 1 -->
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Module 1: Accounting & Business Fundamentals</h3>
+                        <span class="module-toggle">+</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li>Basics of Financial & Cost Accounting</li>
+                            <li>Journal / Accounting Concepts</li>
+                            <li>Capital vs Revenue Transactions</li>
+                            <li>Accounting Documents (Invoices, Receipts, Vouchers)</li>
+                            <li>Accounting Cycle & Final Accounts Overview</li>
+                            <li>Manual Entry vs Software Entry: Bridging the Gap</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Module 2 -->
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Module 2: Tally Prime Essentials (with Accounting Integration)</h3>
+                        <span class="module-toggle">+</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li>Tally Prime Introduction & Interface</li>
+                            <li>Company Creation & Configuration</li>
+                            <li>Ledger and Group Creation (Accounting & Statutory)</li>
+                            <li>Voucher Types – Accounting & Inventory</li>
+                            <li>Chart of Accounts in Tally</li>
+                            <li>Bill-wise Transactions (Accounts Receivable / Payable)</li>
+                            <li>BRS – Manual & Tally-based</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Module 3 -->
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Module 3: GST Accounting – Tally + Excel Workflow</h3>
+                        <span class="module-toggle">+</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li>GST Fundamentals (Intrastate vs Interstate)</li>
+                            <li>GST Master Setup in Tally</li>
+                            <li>GST Entries: Purchase, Sales, Credit/Debit Notes</li>
+                            <li>GST Adjustment Entries</li>
+                            <li>GST Reports & Return Summary (Tally)</li>
+                            <li>GST Filing Prep using Excel Templates</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Module 4 -->
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Module 4: TDS Compliance – Tally + Excel Workflow</h3>
+                        <span class="module-toggle">+</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li>TDS Sections, Thresholds, and Applicability</li>
+                            <li>TDS Configuration in Tally</li>
+                            <li>TDS Deduction Entries (Contractor, Rent, Professional Fees)</li>
+                            <li>TDS Payable Ledger, Payment Vouchers</li>
+                            <li>TDS Certificates and Reports in Tally</li>
+                            <li>TDS Computation Sheet in Excel (Auto Calculation with Formulas)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Module 7 -->
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Module 7: MIS Reporting – Excel Dashboards from Tally Data</h3>
+                        <span class="module-toggle">+</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li>Exporting Tally Data to Excel (Day Book, Ledger, Trial Balance)</li>
+                            <li>Creating PivotTables & PivotCharts for:
+                                <ul style="margin-left: 20px; margin-top: 5px;">
+                                    <li>GST Analysis</li>
+                                    <li>Sales Summary by Region/Month</li>
+                                    <li>Debtors Aging</li>
+                                    <li>Expense Trends</li>
+                                </ul>
+                            </li>
+                            <li>Building Financial Dashboards</li>
+                            <li>Ratio Analysis & Graphical Trends</li>
+                            <li>Interactive Dashboards using Slicers and Timelines</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Module 8 -->
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Module 8: Year-End Processes & Auditing</h3>
+                        <span class="module-toggle">+</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li>Finalization of Books in Tally</li>
+                            <li>Adjustments & Provisions</li>
+                            <li>Depreciation Entries</li>
+                            <li>Trial Balance – Excel & Tally Comparison</li>
+                            <li>Audit Features in Tally</li>
+                            <li>Auditor's Report Format in Excel</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Module 9 -->
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Module 9: Data Management & Utilities</h3>
+                        <span class="module-toggle">+</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li>Data Backup and Restore Procedures</li>
+                            <li>User Management and Security Settings</li>
+                            <li>Import/Export Data Functions</li>
+                            <li>System Maintenance and Optimization</li>
+                            <li>Error Detection and Troubleshooting</li>
+                            <li>Report Customization and Templates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COURSE CTA ===== -->
+    <section class="course-cta">
+        <div class="container">
+            <h2>Transform Your Excel Skills Today!</h2>
+            <p style="margin-bottom: 30px;">Master the tool that powers business decisions worldwide!</p>
+            <a href="admissions.html" class="btn primary-btn">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="Image/logo.jpeg" class="footer-logo" alt="logo">
+                <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=61578359521115" class="fb">f</a>
+                    <a href="https://www.instagram.com/accountsandbeyond/" class="ig">◎</a>
+                    <a href="https://www.linkedin.com/company/accountsandbeyond/" class="in">in</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>IMPORTANT LINKS:</h3>
+                <ul class="footer-links">
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="admissions.html">ADMISSION</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>CONTACT DETAILS:</h3>
+                <p>📍 Swojas One, Office 502, Ideal Colony, Kothrud, Pune 411038. Maharashtra</p>
+                <p>📞 +91 8983483783</p>
+                <p>✉ info@accountsandbeyond.in</p>
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+        <div class="floating-contact">
+            <a href="https://wa.me/918983483783" target="_blank" class="float-btn whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

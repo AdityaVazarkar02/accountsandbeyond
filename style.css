@@ -1453,7 +1453,7 @@ footer p {
 /* BACK TO TOP BUTTON */
 .back-to-top {
     position: fixed;
-    bottom: 30px;
+    bottom: 100px;
     right: 30px;
     width: 50px;
     height: 50px;
@@ -1878,7 +1878,7 @@ body.scrolled-past-header .scroll-linked {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
-        bottom: 20px;
+        bottom: 90px;
         right: 15px;
     }
 }
@@ -2374,6 +2374,144 @@ body.scrolled-past-header .scroll-linked {
     transform: translateY(-3px);
 }
 
+/* Course Preview Section */
+.course-preview-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
+}
+
+.course-preview-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.course-preview-section .subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 50px;
+}
+
+.course-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.course-card {
+    background: white;
+    border-radius: 15px;
+    padding: 35px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 124, 186, 0.15);
+    border-color: #007cba;
+}
+
+.course-card-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.course-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.course-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.course-card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.course-card-features li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.course-card-features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.course-card .btn {
+    align-self: flex-start;
+    padding: 12px 25px;
+    font-size: 0.95rem;
+}
+
+/* Responsive for course cards */
+@media (max-width: 768px) {
+    .course-preview-section {
+        padding: 60px 0;
+    }
+    
+    .course-preview-section h2 {
+        font-size: 2rem;
+    }
+    
+    .course-cards-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+    
+    .course-card {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 575px) {
+    .course-preview-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .course-card {
+        padding: 25px 20px;
+    }
+    
+    .course-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .course-card .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 /* Courses Why Choose Section */
 .courses-why-choose {
     padding: 60px 0;
@@ -2431,6 +2569,43 @@ body.scrolled-past-header .scroll-linked {
     background: #007cba;
     color: white;
     padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.module-header:hover {
+    background: #005a87;
+}
+
+.module-title {
+    flex: 1;
+}
+
+.module-toggle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.module.active .module-toggle {
+    transform: rotate(45deg);
+}
+
+.module-content {
+    padding: 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.module.active .module-content {
+    max-height: 1000px;
+    padding: 30px;
 }
 
 .module-header h3 {
@@ -2443,10 +2618,6 @@ body.scrolled-past-header .scroll-linked {
     font-style: italic;
     opacity: 0.9;
     font-size: 0.95rem;
-}
-
-.module-content {
-    padding: 30px;
 }
 
 .module-content ul {
@@ -3778,8 +3949,9 @@ body.scrolled-past-header .scroll-linked {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
-        bottom: 20px;
+        bottom: 90px;
         right: 15px;
+        z-index: 1000;
     }
 }
 
