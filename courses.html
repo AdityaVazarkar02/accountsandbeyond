@@ -7,9 +7,10 @@
     <meta name="keywords" content="accounting courses, tally prime, excel training, gst courses, tds training, payroll accounting, practical training">
     <meta name="author" content="accounts & beyond">
     <meta name="theme-color" content="#007cba">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
     
     <title>Courses - accounts & beyond Institute</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260401">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -213,6 +214,72 @@
             display: block;
         }
         
+        /* Returning User View Styles */
+        .returning-user-view {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .user-info-display {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007cba;
+        }
+        
+        .user-info-display h4 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+        }
+        
+        .user-info-display p {
+            color: #555;
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .button-group .btn {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .button-group .primary-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .button-group .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .button-group .secondary-btn {
+            background: #f8f9fa;
+            color: #555;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .button-group .secondary-btn:hover {
+            background: #e3f2fd;
+            border-color: #007cba;
+            color: #007cba;
+        }
+        
         /* Responsive */
         @media (max-width: 480px) {
             .modal-container {
@@ -232,7 +299,8 @@
             }
         }
     </style>
-
+    
+</head>
 <body>
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress-container">
@@ -266,7 +334,7 @@
             <h1>Practicals | Job-Ready Training | Internship Support</h1>
             <p>Most accounting courses focus on theory. Employers need practical accountants who can manage GST, payroll, reconciliations, and MIS from Day 1.</p>
             <p class="highlight">accounts & beyond bridges this gap with real-world, tool-based learning.</p>
-            <a href="#syllabus" class="btn primary-btn">View Course Syllabus</a>
+            <!-- <a href="#syllabus" class="btn primary-btn">View Course Syllabus</a> -->
         </div>
     </section>
 
@@ -281,12 +349,13 @@
                 <div class="course-card">
                     <div class="course-card-icon">📊</div>
                     <h3>Account Analyst</h3>
-                    <p>Foundation accounting course for beginners. Learn accounting fundamentals, Tally Prime, GST, TDS, and AI-powered accounting tools.</p>
+                    <!-- <p>Foundation accounting course for beginners. Learn accounting fundamentals, Tally Prime, GST, TDS, and AI-powered accounting tools.</p> -->
                     <ul class="course-card-features">
-                        <li>2 Months Duration</li>
-                        <li>5 Core Modules (1,2,3,4,11)</li>
-                        <li>Hands-on Tally Training</li>
-                        <li>Internship Support</li>
+                        <li>1.5 Month Classroom Training</li>
+                        <li>5 Core Modules</li>
+                        <li>Hands-on Practical Training</li>
+                        <li>1.5 months Practical Internship</li>
+                        <li>Data Analysis Skills</li>
                     </ul>
                     <a href="course-detail-1.html" class="btn primary-btn know-more-btn" data-course="Account Analyst" data-url="course-detail-1.html">Know More</a>
                 </div>
@@ -295,12 +364,13 @@
                 <div class="course-card">
                     <div class="course-card-icon">📈</div>
                     <h3>Advance Account Analyst</h3>
-                    <p>Advanced accounting with MIS reporting, year-end processes, and data management. Perfect for career advancement in accounting.</p>
+                    <!-- <p>Advanced accounting with MIS reporting, year-end processes, and data management. Perfect for career advancement in accounting.</p> -->
                     <ul class="course-card-features">
-                        <li>3 Months Duration</li>
-                        <li>7 Core Modules (1,2,3,4,7,8,9)</li>
-                        <li>MIS Dashboard Creation</li>
-                        <li>Data Analysis Skills</li>
+                        <li>1.5 Month Classroom Training</li>
+                        <li>7 Core Modules </li>
+                        <li>Hands-on Practical Training</li>
+                        <li>1.5 months Practical Internship</li>
+                        <li>Advance Data Analysis Skills</li>
                     </ul>
                     <a href="course-detail-2.html" class="btn primary-btn know-more-btn" data-course="Advance Account Analyst" data-url="course-detail-2.html">Know More</a>
                 </div>
@@ -308,13 +378,15 @@
                 <!-- Course 3 - Pro Accounting -->
                 <div class="course-card">
                     <div class="course-card-icon">💰</div>
-                    <h3>Pro Accounting</h3>
-                    <p>Complete professional program covering all 11 modules. From fundamentals to advanced AI-powered accounting workflows.</p>
+                    <h3>Accounts Professional</h3>
+                    <!-- <p>Complete professional program covering all 11 modules. From fundamentals to advanced AI-powered accounting workflows.</p> -->
                     <ul class="course-card-features">
-                        <li>4 Months Duration</li>
-                        <li>11 Complete Modules</li>
-                        <li>Comprehensive Training</li>
-                        <li>6 Months Internship Support</li>
+                        <li>3 Month Classroom Training</li>
+                        <li>11 Core Modules </li>
+                        <li>Comprehensive Practical Training</li>
+                        <li>6 months Practical Internship</li>
+                        <li>Advance Data Analysis Skills</li>
+                        <li>Mock Interviews</li>
                     </ul>
                     <a href="course-detail-3.html" class="btn primary-btn know-more-btn" data-course="Pro Accounting" data-url="course-detail-3.html">Know More</a>
                 </div>
@@ -777,7 +849,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260401"></script>
     <script>
         // Modal functionality
         const modal = document.getElementById('enrollmentModal');
@@ -787,16 +859,105 @@
         const submitBtn = document.getElementById('submitBtn');
         const btnText = submitBtn.querySelector('.btn-text');
         let redirectUrl = '';
+        let currentCourseName = '';
+
+        // Check if user data exists in localStorage
+        function getStoredUserData() {
+            const data = localStorage.getItem('userCourseData');
+            return data ? JSON.parse(data) : null;
+        }
+
+        // Save user data to localStorage
+        function saveUserData(name, email, phone) {
+            const userData = {
+                name: name,
+                email: email,
+                phone: phone,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('userCourseData', JSON.stringify(userData));
+        }
+
+        // Pre-fill form with stored data
+        function prefillFormWithStoredData() {
+            const userData = getStoredUserData();
+            if (userData) {
+                document.getElementById('fullName').value = userData.name || '';
+                document.getElementById('email').value = userData.email || '';
+                document.getElementById('phone').value = userData.phone || '';
+            }
+        }
+
+        // Show returning user view (with Edit Details option)
+        function showReturningUserView() {
+            const userData = getStoredUserData();
+            if (!userData) return;
+
+            form.style.display = 'none';
+            const returningUserDiv = document.createElement('div');
+            returningUserDiv.id = 'returningUserView';
+            returningUserDiv.className = 'returning-user-view';
+            returningUserDiv.innerHTML = `
+                <div class="user-info-display">
+                    <h4>Welcome back, ${userData.name}!</h4>
+                    <p>Email: ${userData.email}</p>
+                    <p>Phone: ${userData.phone}</p>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="btn primary-btn continue-btn" onclick="continueToCourse()">
+                        Continue to Course
+                    </button>
+                    <button type="button" class="btn secondary-btn edit-btn" onclick="showEditForm()">
+                        Edit Details
+                    </button>
+                </div>
+            `;
+            
+            const modalBody = document.querySelector('.modal-body');
+            // Remove existing returning user view if any
+            const existingView = document.getElementById('returningUserView');
+            if (existingView) existingView.remove();
+            
+            modalBody.insertBefore(returningUserDiv, form);
+        }
+
+        // Continue to course (for returning users)
+        function continueToCourse() {
+            window.location.href = redirectUrl;
+        }
+
+        // Show edit form (for returning users)
+        function showEditForm() {
+            const returningUserView = document.getElementById('returningUserView');
+            if (returningUserView) returningUserView.remove();
+            
+            form.style.display = 'block';
+            document.getElementById('successMessage').classList.remove('show');
+            
+            // Pre-fill with stored data
+            prefillFormWithStoredData();
+        }
 
         // Open modal when Know More is clicked
         document.querySelectorAll('.know-more-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const courseName = this.getAttribute('data-course');
+                currentCourseName = this.getAttribute('data-course');
                 redirectUrl = this.getAttribute('data-url');
                 
-                courseInput.value = courseName;
-                modalCourseName.textContent = courseName;
+                courseInput.value = currentCourseName;
+                modalCourseName.textContent = currentCourseName;
+                
+                // Reset modal state
+                resetModal();
+                
+                // Check if user is returning
+                const userData = getStoredUserData();
+                if (userData) {
+                    showReturningUserView();
+                } else {
+                    form.style.display = 'block';
+                }
                 
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -807,7 +968,7 @@
         function closeModal() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
-            resetForm();
+            resetModal();
         }
 
         // Close modal on overlay click
@@ -824,15 +985,20 @@
             }
         });
 
-        // Reset form
-        function resetForm() {
+        // Reset modal state
+        function resetModal() {
             form.reset();
+            form.style.display = 'block';
             document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
             document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
             document.getElementById('successMessage').classList.remove('show');
             submitBtn.disabled = false;
             submitBtn.classList.remove('loading');
             btnText.textContent = 'Submit & View Course';
+            
+            // Remove returning user view if exists
+            const returningUserView = document.getElementById('returningUserView');
+            if (returningUserView) returningUserView.remove();
         }
 
         // Validation functions
@@ -935,6 +1101,9 @@
                 const data = await response.json();
 
                 if (data.success) {
+                    // Save user data to localStorage
+                    saveUserData(name, email, phone);
+                    
                     // Show success message
                     document.getElementById('successMessage').classList.add('show');
                     form.style.display = 'none';

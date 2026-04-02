@@ -116,14 +116,39 @@ img, video, iframe {
     flex-shrink: 0; /* Prevent logo from shrinking */
     display: flex;
     align-items: center;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.logo img {
+    display: block;
+    background: transparent;
 }
 
 
 
 @media (min-width: 1200px) {
     .logo img {
-        height: 190px;
-        /* height: 180px; */
+        height: 70px;
+        width: auto;
+        object-fit: contain;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .logo img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .logo img {
+        height: 50px;
         width: auto;
         object-fit: contain;
         max-width: 100%;
@@ -1076,10 +1101,14 @@ img, video, iframe {
     background: #f8f9fa;
     border-radius: 10px;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 14px;
     appearance: none;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.select-wrapper select option {
+    font-size: 13px;
 }
 
 .select-wrapper select:focus {
@@ -2219,7 +2248,7 @@ body.scrolled-past-header .scroll-linked {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -2251,6 +2280,8 @@ body.scrolled-past-header .scroll-linked {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
+    transform: scale(1.1);
 }
 
 .team-member h3 {
@@ -4520,4 +4551,24 @@ body.scrolled-past-header .scroll-linked {
     font-size:20px;
     cursor:pointer;
     border-radius:6px;
+}
+
+
+
+@media (min-width: 1200px) {
+    .logo img {
+        height: 90px;  /* was 70px */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .logo img {
+        height: 75px;  /* was 60px */
+    }
+}
+
+@media (max-width: 767px) {
+    .logo img {
+        height: 65px;  /* was 50px */
+    }
 }
