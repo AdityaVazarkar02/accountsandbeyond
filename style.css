@@ -2042,6 +2042,28 @@ body.scrolled-past-header .scroll-linked {
     color: #2c3e50;
     text-align: center;
     margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.institute-gallery h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #007cba, #00c3ff, #007cba);
+    border-radius: 2px;
+}
+
+.gallery-tagline {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 25px;
 }
 
 .gallery-grid {
@@ -2743,8 +2765,9 @@ body.scrolled-past-header .scroll-linked {
 }
 
 .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 25px;
     max-width: 1200px;
     margin: 0 auto 40px;
@@ -2757,6 +2780,8 @@ body.scrolled-past-header .scroll-linked {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, background 0.3s ease;
+    width: 100%;
+    max-width: 350px;
 }
 
 .benefit-card:hover {
@@ -2815,20 +2840,15 @@ body.scrolled-past-header .scroll-linked {
     }
     
     .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+    }
+    
+    .benefit-card {
+        max-width: 320px;
     }
     
     .module-header {
         padding: 20px 25px;
-    }
-    
-    .module-header h3 {
-        font-size: 1.2rem;
-    }
-    
-    .module-content {
-        padding: 25px;
     }
 }
 
@@ -2865,9 +2885,12 @@ body.scrolled-past-header .scroll-linked {
     }
     
     .benefits-grid {
-        grid-template-columns: 1fr;
         gap: 20px;
         padding: 0 15px;
+    }
+    
+    .benefit-card {
+        max-width: 100%;
     }
     
     .module {
@@ -2987,9 +3010,12 @@ body.scrolled-past-header .scroll-linked {
     }
     
     .benefits-grid {
-        grid-template-columns: 1fr;
         gap: 15px;
         padding: 0 15px;
+    }
+    
+    .benefit-card {
+        max-width: 100%;
     }
     
     .benefit-card {
